@@ -36,4 +36,53 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka/
   instance:
     instance-id: microservicecloud-dept8001   
-    prefer-ip-address: true                 
+    prefer-ip-address: true        
+    
+
+info:
+  app.name: ljc-microservicecloud
+  company.name: www.ljc.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+
+server:
+  port: 8001
+spring:
+  profiles: test
+  application:
+    name: microservicecloud-config-dept-client
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/cloudDB01
+    username: root
+    password: 
+    dbcp2:
+      min-idle:5
+      initial-size: 5                                   
+      max-total: 5                                      
+      max-wait-millis: 200 
+  
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml   
+  type-aliases-package: com.springcloud.entities       
+  mapper-locations:
+    - classpath:mybatis/mapper/**/*.xml     
+    
+
+eureka:
+  client:    
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  instance:
+    instance-id: microservicecloud-dept8001   
+    prefer-ip-address: true        
+    
+
+info:
+  app.name: ljc-microservicecloud
+  company.name: www.ljc.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
